@@ -15,8 +15,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/dmp/signup.php">Signup</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/dmp/logout.php">Logout</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false" >
+            Logout
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="/dmp/logout.php">Confirm Logout</a></li>
+          </ul>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

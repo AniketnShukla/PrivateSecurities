@@ -10,13 +10,13 @@
 
 body{
     background-image: linear-gradient(to bottom left ,rgb(46, 3, 58),rgb(114, 50, 216), #0f0a2a);
+    background-size: cover;
     color: white;  
     font-family: 'Lato', sans-serif;
     width:100%;
 }
 
 .container{
-    max-width: 100%;
     padding: 34px;
 
 
@@ -82,9 +82,9 @@ form{
 
 
 }
-.btn 
+
 .btn:hover{
-    background-color: grey;
+    background-color: red;
 }
 
 .btngroup{
@@ -105,4 +105,8 @@ form{
 
 .submitmsg{
     color: rgb(0, 97, 40);
+}
+
+a{
+    text-decoration: none;
 }

@@ -1,3 +1,38 @@
+<?php
+
+  $valid = false;
+
+  if(isset($_POST['uname']) && isset($_POST['password'])){
+    $con = mysqli_connect('localhost', 'root','manager', 'secdev', 3307 );
+
+    session_start();
+
+    if(!$con){
+      die("connection to this database failed due to" .mysqli_connect_error());
+    }
+
+    $name = $_POST['uname'];
+    $pass = $_POST['password'];
+
+    $s = "select * from signup where name = '$name' && password = '$pass'";
+
+    $result = mysqli_query($con, $s);
+
+    $num = mysqli_num_rows($result);
+
+    if($num == 1){
+      $_SESSION['username'] = $name;
+      header('location:welcome.php');
+      $valid = true; 
+    }
+    else{
+      $valid = false;
+    }
+  }    
+5
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,16 +48,16 @@
   <body>
 <?php require 'partials/_nav.php' ?>
 <div class="container" >
-<form action="/dmp/signip.php" method="post">
+<form action="login.php" method="post">
 
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Username
     </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input type="text" name="uname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
 
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1">
     <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
    
   </div>
@@ -30,7 +65,12 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="bt"><a id="leadtodbms" href="./index.php">Submit</a></button>
+  <?php
+    if(($valid == false) && isset($_POST['password'])){
+     echo "<p>Username or Password invalid.</p>";
+    }
+  ?>
+  <button type="submit" class="bt">Submit</button>
 </form>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->

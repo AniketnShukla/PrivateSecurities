@@ -1,3 +1,39 @@
+<?php
+$same = true;
+
+if(isset($_POST['uname']) && isset($_POST['password'])){
+  $con = mysqli_connect('localhost', 'root','manager', 'secdev', 3307 );
+
+  if(!$con){
+    die("connection to this database failed due to" .mysqli_connect_error());
+  }
+
+  $name = $_POST['uname'];
+  $pass = $_POST['password'];
+  $cpass = $_POST['cpassword'];
+
+  if($pass == $cpass){
+    $s = "select * from signup where name = '$name'";
+
+    $result = mysqli_query($con, $s);
+
+    $num = mysqli_num_rows($result);
+
+    if($num == 1){
+      echo "Username already taken";
+    }
+    else{
+      $reg = "insert into signup(Name, Password) values ('$name' , '$pass')";
+      mysqli_query($con, $reg);
+      echo "Registration Successful";
+      header('location:login.php');
+    }
+    }
+  else{
+    $same = false;
+  }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,27 +49,31 @@
   <body>
 <?php require 'partials/_nav.php' ?>
 <div class="container" >
-<form action="/dmp/signip.php" method="post">
+<form action="/dmp/signup.php" method="post">
 
   <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Username
+    <label class="form-label">Username
     </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <input name='uname' type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
 
   <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
+    <label class="form-label">Password</label>
+    <input name='password' type="password" class="form-control" id="exampleInputPassword1" required>
     <div id="emailHelp" class="form-text">We'll never share your password with anyone else.</div>
 
-    <label for="cPassword1" class="form-label">Confirm Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1">
-   
+    <label for="cpassword" class="form-label">Confirm Password</label>
+    <input name='cpassword' type="password" class="form-control" id="exampleInputPassword1">
+    <?php 
+    if($same == false){
+      echo "<p>Passwords do not match.</p>";
+    }
+    ?>
   </div>
   <div class="mb-3 form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="bt"><a id="leadtodbms" href="./index.php">Submit</a></button>
+  <button type="submit" class="bt">Submit</button>
 </form>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->
