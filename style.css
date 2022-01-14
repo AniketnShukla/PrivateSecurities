@@ -9,12 +9,14 @@
 }
 
 body{
-    background-image: linear-gradient(to bottom left ,rgb(46, 3, 58),rgb(114, 50, 216), #0f0a2a);
-    background-size: cover;
+    background-image: url('/dmp/partials/bg1.jpg');
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: white;  
     font-family: 'Lato', sans-serif;
     width:100%;
-}
+  }
 
 .container{
     padding: 34px;
@@ -70,10 +72,10 @@ form{
 .btn{
     
     color: white;
-    background-color: #763CF1;
+    background-color: #371c7077;
     padding:8px 12px;
     font-size: 20px;
-    border-radius: 30px;
+    border-radius: 3px;
     cursor: pointer;
     margin: 0px 5px;
     width: 130px;
@@ -84,7 +86,7 @@ form{
 }
 
 .btn:hover{
-    background-color: red;
+    background-color: rgb(34, 4, 63) !important;
 }
 
 .btngroup{
@@ -92,14 +94,18 @@ form{
     align-items: left;
     justify-content: flex-start;
     text-align: center;
+    color: white;
     
+    
+}
+.btngroup a{
+    text-decoration: none;
 }
 
 .image{
     width: 100%;
     position: absolute;
     z-index: -1;
-    object-fit:fill;
     
 }
 
@@ -109,4 +115,10 @@ form{
 
 a{
     text-decoration: none;
+}
+
+
+
+.dataTables_wrapper .dataTables_length{
+    color:white;
 }

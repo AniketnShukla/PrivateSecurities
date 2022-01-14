@@ -4,3 +4,28 @@ body{
 background-position: center;
 
 }
+@import url('https://fonts.googleapis.com/css2?family=Gudea&family=Lato:wght@300&family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gudea&display=swap');
+
+*{
+    margin: 0px;
+    padding:0px;
+    box-sizing: border-box;
+
+}
+
+body{
+  background-image: url('/partials/bg1.jpg');
+  background-width:100%;
+  background-size: cover;
+  color: black;  
+  font-family: 'Lato', sans-serif;
+  width:100%;
+}
+
+.con{
+
+  text-align:center;
+  background-color: rgba(rgb(255, 255, 255), rgb(211, 211, 211), rgb(255, 255, 255), 0.9);
+}
+
